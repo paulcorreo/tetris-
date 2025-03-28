@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tetris-deployment
+spec:
+  replicas: 2  # Número de instancias del juego
+  selector:
+    matchLabels:
+      app: tetris
+  template:
+    metadata:
+      labels:
+        app: tetris
+    spec:
+      containers:
+      - name: tetris
+        image: paulcorreo1979/tetris-k8s:latest  #Tu imagen tetris en hub.docker.com 
+        ports:
+        - containerPort: 80
